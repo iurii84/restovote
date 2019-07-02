@@ -78,4 +78,8 @@ public class Meal {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public boolean isNew() {
+        return this.id == null;
+    }
 }
