@@ -31,6 +31,11 @@ public class Meal {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;                                      //reference for the user's(admin's) id, whose added that restaurant
+
     public Meal() {
     }
 
@@ -64,5 +69,13 @@ public class Meal {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
