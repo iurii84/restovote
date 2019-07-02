@@ -25,4 +25,40 @@ public class Restaurant {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private List<User> listOfUsersVotedFor;
+
+
+    public Restaurant() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Meal> getMealList() {
+        return mealList;
+    }
+
+    public void setMealList(List<Meal> mealList) {
+        this.mealList = mealList;
+    }
+
+    public List<User> getListOfUsersVotedFor() {
+        return listOfUsersVotedFor;
+    }
+
+    public void setListOfUsersVotedFor(List<User> listOfUsersVotedFor) {
+        this.listOfUsersVotedFor = listOfUsersVotedFor;
+    }
 }

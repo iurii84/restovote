@@ -31,4 +31,38 @@ public class Meal {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;
 
+    public Meal() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }

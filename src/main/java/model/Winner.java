@@ -22,4 +22,31 @@ public class Winner {
     private Restaurant restaurant;                          //get entire entity of restaurant. Even restaurant is removed
                                                             //we can see all statistics of voting
 
+
+    public Winner() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }
