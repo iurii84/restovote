@@ -47,6 +47,12 @@ public class Meal {
     public Meal() {
     }
 
+    public Meal(Long id, @NotBlank @Size(min = 5, max = 100) String description, @NotNull @Range(max = 200_00) Long price) {
+        this.id = id;
+        this.description = description;
+        this.price = price;
+    }
+
     public Long getId() {
         return id;
     }
