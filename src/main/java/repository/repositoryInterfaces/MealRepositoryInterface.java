@@ -12,10 +12,10 @@ public interface MealRepositoryInterface {
     // false if meal do not belong to userId
     boolean delete(Long id, Long userId);
 
-    // null if meal do not belong to userId
-    Meal get(Long id, Long userId);
 
-    //  null if meal do not belong to userId
-    List getAll(Long userId);
+    Meal get(Long id);
+
+
+    List getByRestaurant(Long restoId);
 
 }

@@ -8,10 +8,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+@NamedQueries({
+        @NamedQuery(name = Meal.DELETE, query = "DELETE FROM Meal m WHERE m.id=:id AND m.user.id=:userId"),
+        @NamedQuery(name = Meal.GET_BY_ID, query = "SELECT m FROM Meal m WHERE m.id=:id")
+})
 
 @Entity
 @Table(name = "meals")
 public class Meal {
+    public static final String DELETE = "Meal.delete";
+    public static final String GET_BY_ID = "Meal.getById";
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;                                        //ID
