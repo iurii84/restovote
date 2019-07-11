@@ -1,4 +1,4 @@
-package model;
+package restovoteApp.model;
 
 public enum Role {
     USER,

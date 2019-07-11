@@ -1,4 +1,4 @@
-package model;
+package restovoteApp.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

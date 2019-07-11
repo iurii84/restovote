@@ -1,4 +1,4 @@
-package model;
+package restovoteApp.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;

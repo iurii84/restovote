@@ -1,8 +1,7 @@
-package repository.repositoryInterfaces;
+package restovoteApp.repository.repositoryInterfaces;
 
-import model.Meal;
+import restovoteApp.model.Meal;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface MealRepositoryInterface {

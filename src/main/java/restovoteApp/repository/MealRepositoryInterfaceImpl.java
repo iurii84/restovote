@@ -1,12 +1,12 @@
-package repository;
+package restovoteApp.repository;
 
-import model.Meal;
-import model.Restaurant;
-import model.User;
+import restovoteApp.model.Meal;
+import restovoteApp.model.Restaurant;
+import restovoteApp.model.User;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import repository.repositoryInterfaces.MealRepositoryInterface;
+import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
 
 
 import javax.persistence.EntityManager;
