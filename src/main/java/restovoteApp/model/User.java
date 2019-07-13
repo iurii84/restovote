@@ -30,18 +30,18 @@ public class User {
     @Size(min = 5, max = 100)
     private String password;                                            //password of user
 
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user.id"))
-    @Column(name = "role")
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;                                            //user role from ENUM "Role"
+//    @Enumerated(EnumType.STRING)
+//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user.id"))
+//    @Column(name = "role")
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    private Set<Role> roles;                                            //user role from ENUM "Role"
 
     @Column(name = "dateTimeOfVote", nullable = false)
     private LocalDateTime dateTimeOfVote;                               //date and time when that user has voted for
 
-    //@ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "resto_id", referencedColumnName = "id", nullable = false)
-    private Restaurant votedFor;                                        //restaurant id, which were voted by user
+//    //@ManyToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "resto_id", referencedColumnName = "id", nullable = false)
+//    private Restaurant votedFor;                                        //restaurant id, which were voted by user
 
 
     public User() {
@@ -79,13 +79,13 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
+//    public Set<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Set<Role> roles) {
+//        this.roles = roles;
+//    }
 
     public LocalDateTime getDateTimeOfVote() {
         return dateTimeOfVote;
@@ -95,11 +95,11 @@ public class User {
         this.dateTimeOfVote = dateTimeOfVote;
     }
 
-    public Restaurant getVotedFor() {
-        return votedFor;
-    }
-
-    public void setVotedFor(Restaurant votedFor) {
-        this.votedFor = votedFor;
-    }
+//    public Restaurant getVotedFor() {
+//        return votedFor;
+//    }
+//
+//    public void setVotedFor(Restaurant votedFor) {
+//        this.votedFor = votedFor;
+//    }
 }

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import restovoteApp.model.Meal;
 import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 @RestController
@@ -23,9 +22,7 @@ public class MealRestController {
     }
 
 
-    public String welcome() {//Welcome page, non-rest
-        return "Welcome to RestTemplate Example.";
-    }
+
 
     @GetMapping("/get")
     public List<Meal> getAllMeal(){

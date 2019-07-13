@@ -6,7 +6,7 @@ import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
 
 import java.util.ArrayList;
 import java.util.List;
-@Repository
+//@Repository
 public class MockInterfaceImpl implements MealRepositoryInterface {
 
     @Override
