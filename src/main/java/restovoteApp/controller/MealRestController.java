@@ -11,18 +11,18 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("/meallist")
 public class MealRestController {
     private MealRepositoryInterface mealRepositoryInterface;
-    private DataSource dataSource;
+
 
     @Autowired
-    public MealRestController (MealRepositoryInterface mealRepositoryInterface, DataSource dataSource){
+    public MealRestController (MealRepositoryInterface mealRepositoryInterface){
         this.mealRepositoryInterface = mealRepositoryInterface;
-        this.dataSource = dataSource;
+
     }
 
-    @RequestMapping("/meallist")
+
     public String welcome() {//Welcome page, non-rest
         return "Welcome to RestTemplate Example.";
     }
