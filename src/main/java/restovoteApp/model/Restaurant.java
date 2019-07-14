@@ -17,13 +17,11 @@ public class Restaurant {
     private String name;                                //name of restaurant
 
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "meal_id", nullable = false)
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Meal> mealList;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
     private List<User> listOfUsersVotedFor;
 
 

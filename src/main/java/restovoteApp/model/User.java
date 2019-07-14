@@ -39,9 +39,9 @@ public class User {
     @Column(name = "dateTimeOfVote", nullable = false)
     private LocalDateTime dateTimeOfVote;                               //date and time when that user has voted for
 
-//    //@ManyToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "resto_id", referencedColumnName = "id", nullable = false)
-//    private Restaurant votedFor;                                        //restaurant id, which were voted by user
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "resto_id", referencedColumnName = "id", nullable = false)
+    private Restaurant votedFor;                                        //restaurant id, which were voted by user
 
 
     public User() {
@@ -95,11 +95,11 @@ public class User {
         this.dateTimeOfVote = dateTimeOfVote;
     }
 
-//    public Restaurant getVotedFor() {
-//        return votedFor;
-//    }
-//
-//    public void setVotedFor(Restaurant votedFor) {
-//        this.votedFor = votedFor;
-//    }
+    public Restaurant getVotedFor() {
+        return votedFor;
+    }
+
+    public void setVotedFor(Restaurant votedFor) {
+        this.votedFor = votedFor;
+    }
 }
