@@ -1,13 +1,11 @@
 package restovoteApp.repository;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import restovoteApp.model.Meal;
 import restovoteApp.model.Restaurant;
 import restovoteApp.model.User;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -56,7 +54,9 @@ public class MealRepositoryInterfaceImpl implements MealRepositoryInterface {
 
     @Override
     public List getByRestaurant(Long restoId) {
-        return null;
+        Query getQuery = em.createNamedQuery(Meal.GET_BY_RESTO_ID)
+                .setParameter("restoid", restoId);
+        return getQuery.getResultList();
     }
 }
 

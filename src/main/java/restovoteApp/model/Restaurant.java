@@ -17,11 +17,11 @@ public class Restaurant {
     private String name;                                //name of restaurant
 
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
     private List<Meal> mealList;
 
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id")
     private List<User> listOfUsersVotedFor;
 
 

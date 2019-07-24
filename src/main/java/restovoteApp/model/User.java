@@ -5,7 +5,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -40,7 +39,7 @@ public class User {
     private LocalDateTime dateTimeOfVote;                               //date and time when that user has voted for
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "resto_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "restoId", referencedColumnName = "id", nullable = false)
     private Restaurant votedFor;                                        //restaurant id, which were voted by user
 
 

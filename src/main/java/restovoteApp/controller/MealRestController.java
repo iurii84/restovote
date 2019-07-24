@@ -10,7 +10,7 @@ import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
 import java.util.List;
 
 @RestController
-@RequestMapping("/meallist")
+@RequestMapping("/")
 public class MealRestController {
     private MealRepositoryInterface mealRepositoryInterface;
 
@@ -22,11 +22,15 @@ public class MealRestController {
     }
 
 
+    @GetMapping("/")
+    public String helloMessanger() {
+        return "Hello from restoVote";
+    }
 
 
-    @GetMapping("/get")
+    @GetMapping("/getallmealbyrestaurantid")
     public List<Meal> getAllMeal(){
-        System.out.println("getAllMeal");
-        return mealRepositoryInterface.getByRestaurant(1l);
+        System.out.println("getallmealbyrestaurantid");
+        return mealRepositoryInterface.getByRestaurant(1L);
     }
 }
