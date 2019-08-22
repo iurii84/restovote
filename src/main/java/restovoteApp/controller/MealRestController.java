@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import restovoteApp.model.Meal;
-import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
+import restovoteApp.service.MealService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/meal", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
-    private MealRepositoryInterface mealRepositoryInterface;
+    private MealService mealService;
 
 
     @Autowired
-    public MealRestController (MealRepositoryInterface mealRepositoryInterface){
-        this.mealRepositoryInterface = mealRepositoryInterface;
+    public MealRestController (MealService mealService){
+        this.mealService = mealService;
 
     }
 
@@ -34,7 +34,7 @@ public class MealRestController {
     @GetMapping("/resto")
     public List<Meal> getAllMealByRestoID(@RequestParam(name = "id") Long restoId) {
         System.out.println("getallmealbyrestaurantid");
-        return mealRepositoryInterface.getByRestaurant(restoId);
+        return mealService.getAllMealByRestoId(restoId);
     }
 
 

@@ -2,8 +2,9 @@ package restovoteApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
+
+import java.util.List;
 
 @Service
 public class MealService {
@@ -14,8 +15,12 @@ public class MealService {
         this.mealRepository = mealRepository;
     }
 
-    @Transactional
+
     public void delete(Long mealId, Long userId) {
         mealRepository.delete(mealId, userId);
+    }
+
+    public List getAllMealByRestoId(Long restoId) {
+        return mealRepository.getByRestaurant(restoId);
     }
 }
