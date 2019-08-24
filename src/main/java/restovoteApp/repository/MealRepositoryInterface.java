@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import restovoteApp.model.Meal;
 import restovoteApp.model.Restaurant;
 import restovoteApp.model.User;
-import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,12 +16,12 @@ import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
-public class MealRepositoryInterfaceImpl implements MealRepositoryInterface {
+public class MealRepositoryInterface {
     @PersistenceContext
     private EntityManager em;
 
 
-    @Override
+
     @Transactional
     public Meal save(Meal meal, Long userId, Long restoId) {
         if (!meal.isNew() && get(meal.getId()) == null) {
@@ -38,7 +37,7 @@ public class MealRepositoryInterfaceImpl implements MealRepositoryInterface {
 
     }
 
-    @Override
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
 //    @Modifying
     @Transactional
@@ -50,7 +49,7 @@ public class MealRepositoryInterfaceImpl implements MealRepositoryInterface {
 
     }
 
-    @Override
+
     public Meal get(Long id) {
         Query getQuery = em.createNamedQuery(Meal.GET_BY_ID)
                 .setParameter("id", id);
@@ -58,7 +57,7 @@ public class MealRepositoryInterfaceImpl implements MealRepositoryInterface {
     }
 
     @SuppressWarnings("unchecked")
-    @Override
+
     public List<Meal> getByRestaurant(Long restoId) {
         Query getQuery = em.createNamedQuery(Meal.GET_BY_RESTO_ID)
                 .setParameter("restoid", restoId);

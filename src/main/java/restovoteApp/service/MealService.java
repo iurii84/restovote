@@ -3,7 +3,7 @@ package restovoteApp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restovoteApp.model.Meal;
-import restovoteApp.repository.repositoryInterfaces.MealRepositoryInterface;
+import restovoteApp.repository.MealRepositoryInterface;
 
 import java.util.List;
 
