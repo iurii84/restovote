@@ -1,6 +1,5 @@
 package restovoteApp.repository;
 
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +40,7 @@ public class MealRepositoryInterfaceImpl implements MealRepositoryInterface {
 
     @Override
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Modifying
+//    @Modifying
     @Transactional
     public boolean delete(Long id, Long userId) {
         return em.createNamedQuery(Meal.DELETE)

@@ -3,8 +3,8 @@ package restovoteApp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import restovoteApp.model.Meal;
 import restovoteApp.service.MealService;
@@ -23,18 +23,16 @@ public class MealRestController {
 
     }
 
-
-    @GetMapping
-    public String helloMessanger() {
-        return "Hello from restoVote";
-    }
-
-
     @SuppressWarnings("unchecked")
-    @GetMapping("/resto")
-    public List<Meal> getAllMealByRestoID(@RequestParam(name = "id") Long restoId) {
+    @GetMapping("/resto/{restoId}")
+    public List<Meal> getAllMealByRestoID(@PathVariable Long restoId) {
         System.out.println("getallmealbyrestaurantid");
         return mealService.getAllMealByRestoId(restoId);
+    }
+
+    @GetMapping("/{id}")
+    public Meal getMealById(@PathVariable Long id) {
+        return mealService.getById(id);
     }
 
 
