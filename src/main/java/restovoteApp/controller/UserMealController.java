@@ -13,14 +13,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/meal", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MealController {
+public class UserMealController {
     private MealService mealService;
 
 
     @Autowired
-    public MealController(MealService mealService){
+    public UserMealController(MealService mealService){
         this.mealService = mealService;
+    }
 
+    @GetMapping("/{id}")
+    public Meal getMealById(@PathVariable Long id) {
+        return mealService.getById(id);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,11 +33,4 @@ public class MealController {
         System.out.println("getallmealbyrestaurantid");
         return mealService.getAllMealByRestoId(restoId);
     }
-
-    @GetMapping("/{id}")
-    public Meal getMealById(@PathVariable Long id) {
-        return mealService.getById(id);
-    }
-
-
 }

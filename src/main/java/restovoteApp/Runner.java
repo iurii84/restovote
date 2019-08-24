@@ -1,13 +1,13 @@
 package restovoteApp;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import restovoteApp.controller.MealController;
+import restovoteApp.controller.UserMealController;
 import restovoteApp.model.Meal;
 import restovoteApp.repository.MealRepositoryInterfaceImpl;
 
 public class Runner {
     private static ClassPathXmlApplicationContext springContext;
-    private static MealController mealController;
+    private static UserMealController userMealController;
 
 
     private static Meal meal_1 = new Meal(null, "description_1", 2000L);
