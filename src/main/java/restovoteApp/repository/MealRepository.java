@@ -16,7 +16,7 @@ import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
-public class MealRepositoryInterface {
+public class MealRepository {
     @PersistenceContext
     private EntityManager em;
 

@@ -3,16 +3,16 @@ package restovoteApp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restovoteApp.model.Meal;
-import restovoteApp.repository.MealRepositoryInterface;
+import restovoteApp.repository.MealRepository;
 
 import java.util.List;
 
 @Service
 public class MealService {
-    private final MealRepositoryInterface mealRepository;
+    private final MealRepository mealRepository;
 
     @Autowired
-    public MealService(MealRepositoryInterface mealRepository) {
+    public MealService(MealRepository mealRepository) {
         this.mealRepository = mealRepository;
     }
 

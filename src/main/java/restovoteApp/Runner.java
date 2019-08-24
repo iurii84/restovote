@@ -3,7 +3,7 @@ package restovoteApp;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import restovoteApp.controller.UserMealController;
 import restovoteApp.model.Meal;
-import restovoteApp.repository.MealRepositoryInterface;
+import restovoteApp.repository.MealRepository;
 
 public class Runner {
     private static ClassPathXmlApplicationContext springContext;
@@ -22,7 +22,7 @@ public class Runner {
 
 
 
-        MealRepositoryInterface repo = new MealRepositoryInterface();
+        MealRepository repo = new MealRepository();
         repo.save(meal_1, 1L, 1L);
         repo.save(meal_2, 2L, 2L);
         repo.save(meal_3, 3L, 3L);
