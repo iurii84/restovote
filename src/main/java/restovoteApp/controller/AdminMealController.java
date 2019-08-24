@@ -14,11 +14,11 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/admin/meal", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AdminMealRestController {
+public class AdminMealController {
     private MealService mealService;
 
     @Autowired
-    public AdminMealRestController(MealService mealService) {
+    public AdminMealController(MealService mealService) {
         this.mealService = mealService;
 
     }

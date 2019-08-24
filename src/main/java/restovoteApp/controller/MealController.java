@@ -13,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/meal", produces = MediaType.APPLICATION_JSON_VALUE)
-public class MealRestController {
+public class MealController {
     private MealService mealService;
 
 
     @Autowired
-    public MealRestController (MealService mealService){
+    public MealController(MealService mealService){
         this.mealService = mealService;
 
     }
