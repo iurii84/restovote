@@ -16,21 +16,11 @@ import java.net.URI;
 @RequestMapping(value = "/admin/meal", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AdminMealController {
     private MealService mealService;
+    private long authorisedUser = 1;
 
     @Autowired
     public AdminMealController(MealService mealService) {
         this.mealService = mealService;
-
-    }
-    private long authorisedUser = 1;
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteMeal(@PathVariable Long id) {
-
-
-        System.out.println("meal_id = " + id);
-        mealService.delete(id, authorisedUser); // TODO implement users authentication
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -39,8 +29,13 @@ public class AdminMealController {
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/meal/" + "/{id}")
                 .buildAndExpand(created.getId()).toUri();
-
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMeal(@PathVariable Long id) {
+        System.out.println("meal_id = " + id);
+        mealService.delete(id, authorisedUser); // TODO implement users authentication
+    }
 }
