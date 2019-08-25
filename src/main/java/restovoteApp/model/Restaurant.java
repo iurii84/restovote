@@ -1,13 +1,25 @@
 package restovoteApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
+
+@NamedQueries({
+        @NamedQuery(name = Restaurant.GET_BY_ID, query = "SELECT r FROM Restaurant r WHERE r.id=:id"),
+})
+
+
 @Entity
 @Table(name = "restaurants")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Restaurant {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    public static final String GET_BY_ID = "Restaurant.getById";
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;                                    //ID
 
@@ -17,12 +29,19 @@ public class Restaurant {
     private String name;                                //name of restaurant
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
     private List<Meal> mealList;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id")
     private List<User> listOfUsersVotedFor;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "createdBy")
+    private User createdBy;
 
 
     public Restaurant() {
@@ -58,5 +77,19 @@ public class Restaurant {
 
     public void setListOfUsersVotedFor(List<User> listOfUsersVotedFor) {
         this.listOfUsersVotedFor = listOfUsersVotedFor;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
+    }
+
+
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 }

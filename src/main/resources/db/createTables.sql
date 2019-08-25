@@ -19,6 +19,7 @@ CREATE TABLE restaurants
 (
     id   BIGINT      NOT NULL AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
+    createdBy BIGINT NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
@@ -43,3 +44,7 @@ CREATE TABLE winners
 ALTER TABLE meals
     ADD FOREIGN KEY (restoId) REFERENCES restaurants (id),
     ADD FOREIGN KEY (userId) REFERENCES users (id);
+
+
+ALTER TABLE restaurants
+    ADD FOREIGN KEY (createdBy) REFERENCES users (id);

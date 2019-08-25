@@ -7,14 +7,16 @@ FROM users;
 DELETE
 FROM winners;
 
-INSERT INTO restaurants (id, name)
-VALUES (1, 'Super Resto'),
-       (2, 'Super++ Resto');
+
 
 
 INSERT INTO users(id, name, email, password, restoId, dateTimeOfVote)
 VALUES (1, 'Iuri', 'iurii@gmail.com', '123', 2, '2019-07-22 21:10:07'),
        (2, 'Tanea', 'tanea@gmail.com', '321', 1, '2019-07-22 19:15:48');
+
+INSERT INTO restaurants (id, name, createdBy)
+VALUES (1, 'Super Resto', 1),
+       (2, 'Super++ Resto', 1);
 
 INSERT INTO meals(id, description, price, restoid, userid)
 VALUES (1, 'eggs', 130, 1, 1),

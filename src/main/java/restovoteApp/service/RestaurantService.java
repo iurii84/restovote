@@ -10,7 +10,7 @@ public class RestaurantService {
     public RestaurantService (RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
     }
-    public Restaurant create() {
-        return restaurantRepository.save();
+    public Restaurant create(Restaurant restaurant, Long authUser) {
+        return restaurantRepository.save(restaurant, authUser);
     }
 }

@@ -22,10 +22,11 @@ public class AdminRestaurantController {
     public AdminRestaurantController(RestaurantService restaurantService){
         this.restaurantService = restaurantService;
     }
+    private long authorisedUser = 1;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
-        Restaurant createdRestaurant = restaurantService.create();
+        Restaurant createdRestaurant = restaurantService.create(restaurant, authorisedUser);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/resto/" + "/{id")
                 .buildAndExpand(createdRestaurant.getId()).toUri();
