@@ -10,6 +10,7 @@ import java.util.List;
 
 @NamedQueries({
         @NamedQuery(name = Restaurant.GET_BY_ID, query = "SELECT r FROM Restaurant r WHERE r.id=:id"),
+        @NamedQuery(name = Restaurant.DELETE_BY_ID, query = "DELETE FROM Restaurant r WHERE r.id=:id AND r.createdBy.id=:userId")
 })
 
 
@@ -18,6 +19,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Restaurant {
     public static final String GET_BY_ID = "Restaurant.getById";
+    public static final String DELETE_BY_ID = "Restaurant.deleteById";
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

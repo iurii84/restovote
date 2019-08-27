@@ -13,4 +13,8 @@ public class RestaurantService {
     public Restaurant create(Restaurant restaurant, Long authUser) {
         return restaurantRepository.save(restaurant, authUser);
     }
+
+    public void delete(long restoId, long userId ) {
+        restaurantRepository.delete(restoId, userId);
+    }
 }

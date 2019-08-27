@@ -23,8 +23,7 @@ public class RestaurantRepository {
         if (restaurant.isNew()) {
             entityManager.persist(restaurant);
             return restaurant;
-        }
-        else return entityManager.merge(restaurant);
+        } else return entityManager.merge(restaurant);
     }
 
     private Restaurant get(Long restaurantId) {
@@ -32,6 +31,14 @@ public class RestaurantRepository {
                 .setParameter("id", restaurantId);
         return (Restaurant) getQuery.getSingleResult();
 
+    }
+
+    @Transactional
+    public boolean delete(long restoId, long userId) {
+        return entityManager.createNamedQuery(Restaurant.DELETE_BY_ID)
+                .setParameter("id", restoId)
+                .setParameter("userId", userId)
+                .executeUpdate() != 0;
     }
 
 }
