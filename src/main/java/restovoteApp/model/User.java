@@ -1,5 +1,9 @@
 package restovoteApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -7,11 +11,20 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@NamedQueries({
+        @NamedQuery(name = User.GET_BY_ID, query = "SELECT u FROM User u WHERE u.id=:id"),
+       // @NamedQuery(name = User.DELETE_BY_ID, query = "DELETE FROM User u WHERE u.id=:id AND r.createdBy.id=:userId")
+})
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "users")
 public class User {
+    public static final String GET_BY_ID = "User.createById";
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)                     //ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)                     //ID
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -30,17 +43,22 @@ public class User {
     @Size(min = 5, max = 100)
     private String password;                                            //password of user
 
+    @JsonIgnore
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "userroles", joinColumns = @JoinColumn(name = "user.id"))
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;                                            //user role from ENUM "Role"
 
-    @Column(name = "dateTimeOfVote", nullable = false)
+    @JsonIgnore
+    @Nullable
+    @Column(name = "dateTimeOfVote")
     private LocalDateTime dateTimeOfVote;                               //date and time when that user has voted for
 
+    @JsonIgnore
+    @Nullable
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "restoId", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "restoId", referencedColumnName = "id")
     private Restaurant votedFor;                                        //restaurant id, which were voted by user
 
 
@@ -79,13 +97,13 @@ public class User {
         this.password = password;
     }
 
-//    public Set<Role> getRoles() {
-//        return roles;
-//    }
-//
-//    public void setRoles(Set<Role> roles) {
-//        this.roles = roles;
-//    }
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public LocalDateTime getDateTimeOfVote() {
         return dateTimeOfVote;
@@ -101,5 +119,9 @@ public class User {
 
     public void setVotedFor(Restaurant votedFor) {
         this.votedFor = votedFor;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
     }
 }

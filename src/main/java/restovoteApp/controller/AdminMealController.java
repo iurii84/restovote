@@ -24,7 +24,8 @@ public class AdminMealController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Meal> createMeal(@RequestBody Meal meal, @RequestParam Long restoId) {
+    public ResponseEntity<Meal> createMeal(@RequestBody Meal meal,
+                                           @RequestParam Long restoId) {
         Meal created = mealService.createMeal(meal, authorisedUser, restoId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/meal/" + "/{id}")
