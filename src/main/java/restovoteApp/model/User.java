@@ -5,6 +5,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -29,11 +30,11 @@ public class User {
     @Size(min = 5, max = 100)
     private String password;                                            //password of user
 
-//    @Enumerated(EnumType.STRING)
-//    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user.id"))
-//    @Column(name = "role")
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    private Set<Role> roles;                                            //user role from ENUM "Role"
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "userroles", joinColumns = @JoinColumn(name = "user.id"))
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Role> roles;                                            //user role from ENUM "Role"
 
     @Column(name = "dateTimeOfVote", nullable = false)
     private LocalDateTime dateTimeOfVote;                               //date and time when that user has voted for
