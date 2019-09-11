@@ -45,7 +45,7 @@ public class User {
 
     @JsonIgnore
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "userroles", joinColumns = @JoinColumn(name = "user.id"))
+    @CollectionTable(name = "userroles", joinColumns = @JoinColumn(name = "userId"))
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;                                            //user role from ENUM "Role"

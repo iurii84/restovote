@@ -32,7 +32,8 @@ CREATE TABLE users
     email          VARCHAR(20)  NOT NULL,
     password       VARCHAR(100) NOT NULL,
     restoId        BIGINT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    CONSTRAINT unique_users_email UNIQUE (email)
 ) ENGINE = InnoDB;
 
 CREATE TABLE winners
@@ -57,3 +58,5 @@ ALTER TABLE meals
 
 ALTER TABLE restaurants
     ADD FOREIGN KEY (createdBy) REFERENCES users (id);
+
+

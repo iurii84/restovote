@@ -26,7 +26,7 @@ public class RestaurantRepository {
         } else return entityManager.merge(restaurant);
     }
 
-    private Restaurant get(Long restaurantId) {
+    public Restaurant get(Long restaurantId) {
         Query getQuery = entityManager.createNamedQuery(Restaurant.GET_BY_ID)
                 .setParameter("id", restaurantId);
         return (Restaurant) getQuery.getSingleResult();
