@@ -27,7 +27,7 @@ public class VoteService {
         LocalTime timeNow = LocalTime.now();
         User currentUser = userRepository.get(userId);
 
-        System.out.println(currentUser.getDateTimeOfVote());
+
         if (currentUser.getDateTimeOfVote() == null || currentUser.getVotedFor() == null) {
             currentUser.setDateTimeOfVote(dateTimeNow);
             currentUser.setVotedFor(restaurantRepository.get(restoId));
@@ -37,9 +37,7 @@ public class VoteService {
         if (timeNow.isBefore(LAST_VOTE_TIME)) {
             currentUser.setDateTimeOfVote(dateTimeNow);
             currentUser.setVotedFor(restaurantRepository.get(restoId));
-            System.out.println(currentUser.getName());
-            System.out.println(currentUser.getEmail());
-            System.out.println(currentUser.getPassword());
+
             userRepository.save(currentUser);
         }
 
