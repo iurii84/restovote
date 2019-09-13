@@ -31,4 +31,10 @@ public class UserRepository {
                 .setParameter("id", userId);
         return (User) query.getSingleResult();
     }
+
+    public User getByEmail(String email) {
+        Query query = entityManager.createNamedQuery(User.GET_BY_EMAIL)
+                .setParameter("email", email);
+        return (User) query.getSingleResult();
+    }
 }

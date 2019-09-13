@@ -13,6 +13,7 @@ import java.util.Set;
 
 @NamedQueries({
         @NamedQuery(name = User.GET_BY_ID, query = "SELECT u FROM User u WHERE u.id=:id"),
+        @NamedQuery(name = User.GET_BY_EMAIL, query = "SELECT u FROM User u where u.email=:email")
        // @NamedQuery(name = User.DELETE_BY_ID, query = "DELETE FROM User u WHERE u.id=:id AND r.createdBy.id=:userId")
 })
 
@@ -21,6 +22,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     public static final String GET_BY_ID = "User.createById";
+    public static final String GET_BY_EMAIL = "User.getByEmail";
 
 
     @Id

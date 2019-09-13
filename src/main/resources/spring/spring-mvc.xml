@@ -20,4 +20,6 @@
     <!--    add Transaction support-->
     <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
     <tx:annotation-driven transaction-manager="txManager"/>
-</beans>
+
+
+   </beans>
