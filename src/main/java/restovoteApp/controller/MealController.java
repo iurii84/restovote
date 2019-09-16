@@ -28,6 +28,7 @@ public class MealController {
     }
 
     @SuppressWarnings("unchecked")
+    //@Secured("IS_AUTHENTICATED")
     @GetMapping("/resto/{restoId}")
     public List<Meal> getAllMealByRestoID(@PathVariable Long restoId) {
         System.out.println("getallmealbyrestaurantid");

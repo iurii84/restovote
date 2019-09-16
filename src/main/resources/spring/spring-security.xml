@@ -5,19 +5,11 @@
 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
 
-
-    <http pattern="/*" use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
-        <http-basic/>
-<!--        <intercept-url pattern="/rest/admin/**" access="hasRole('ROLE_ADMIN')"/>-->
-<!--        <intercept-url pattern="/rest/profile/register" access="isAnonymous()"/>-->
-<!--        <intercept-url pattern="/**" access="isAuthenticated()"/>-->
-<!--        <csrf disabled="true"/>-->
-    </http>
-
     <beans:bean class="org.springframework.security.crypto.factory.PasswordEncoderFactories" id="passwordEncoder" factory-method="createDelegatingPasswordEncoder"/>
 
-    <http>
-<!--        <intercept-url pattern="/login" access="permitAll()"/>-->
+    <http use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
+        <http-basic/>
+        <intercept-url pattern="/meal/resto/**" method="GET" access="isAuthenticated()" />
 <!--        <intercept-url pattern="/profile/register" access="isAnonymous()"/>-->
 
 <!--        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>-->
@@ -36,4 +28,5 @@
 
         </authentication-provider>
     </authentication-manager>
+
 </beans:beans>
