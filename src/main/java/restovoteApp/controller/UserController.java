@@ -17,7 +17,6 @@ import java.net.URI;
 @RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
     private UserService userService;
-    private long authorisedUser = 1;
 
 
     @Autowired //can be omitted

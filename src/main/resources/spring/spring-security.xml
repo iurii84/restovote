@@ -10,6 +10,8 @@
     <http use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
         <http-basic/>
         <intercept-url pattern="/meal/resto/**" method="GET" access="isAuthenticated()" />
+        <intercept-url pattern="/admin/meal/**"  access="isAuthenticated()" />
+        <csrf disabled="true" />
 <!--        <intercept-url pattern="/profile/register" access="isAnonymous()"/>-->
 
 <!--        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>-->

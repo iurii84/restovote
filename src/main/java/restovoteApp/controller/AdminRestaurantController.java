@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import restovoteApp.SecurityUtil;
 import restovoteApp.model.Restaurant;
 import restovoteApp.service.RestaurantService;
 
@@ -20,10 +21,11 @@ public class AdminRestaurantController {
     public AdminRestaurantController(RestaurantService restaurantService){
         this.restaurantService = restaurantService;
     }
-    private long authorisedUser = 1;
+
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
+        long authorisedUser = SecurityUtil.authUserId();
         Restaurant createdRestaurant = restaurantService.create(restaurant, authorisedUser);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/resto/" + "/{id")
@@ -34,6 +36,7 @@ public class AdminRestaurantController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteRestaurant(@PathVariable long id) {
+        long authorisedUser = SecurityUtil.authUserId();
         restaurantService.delete(id, authorisedUser);
     }
 }
