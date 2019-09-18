@@ -13,10 +13,6 @@
         <intercept-url pattern="/admin/meal/**"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/resto/**" access="hasRole('ROLE_ADMIN')" />
         <csrf disabled="true" />
-<!--        <intercept-url pattern="/profile/register" access="isAnonymous()"/>-->
-
-<!--        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>-->
-<!--        <intercept-url pattern="/**" access="isAuthenticated()"/>-->
 
         <form-login login-page="/" default-target-url="/"
                     authentication-failure-url="/login?error=true"
