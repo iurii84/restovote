@@ -9,9 +9,9 @@ FROM winners;
 
 
 
-INSERT INTO users(id, name, email, password, restoId, dateTimeOfVote)
-VALUES (1, 'Iuri Ostrikov', 'iurii@gmail.com', '{noop}123123123', 2, '2019-07-22 21:10:07'),
-       (2, 'Tatiana Tcaci', 'tanea@gmail.com', '{noop}321321321', 1, '2019-07-22 19:15:48');
+INSERT INTO users(id, name, email, password, authorisedByAdmin, restoId, dateTimeOfVote)
+VALUES (1, 'Iuri Ostrikov', 'iurii@gmail.com', '{noop}123123123', TRUE, 2, '2019-07-22 21:10:07'),
+       (2, 'Tatiana Tcaci', 'tanea@gmail.com', '{noop}321321321', TRUE, 1, '2019-07-22 19:15:48');
 
 INSERT INTO userroles(role, userId)
 VALUES ('ROLE_ADMIN', 1),

@@ -26,12 +26,13 @@ CREATE TABLE restaurants
 
 CREATE TABLE users
 (
-    id             BIGINT       NOT NULL AUTO_INCREMENT,
-    name           VARCHAR(20)  NOT NULL,
-    dateTimeOfVote DATETIME(6),
-    email          VARCHAR(20)  NOT NULL,
-    password       VARCHAR(100) NOT NULL,
-    restoId        BIGINT,
+    id                BIGINT       NOT NULL AUTO_INCREMENT,
+    name              VARCHAR(20)  NOT NULL,
+    dateTimeOfVote    DATETIME(6),
+    email             VARCHAR(20)  NOT NULL,
+    password          VARCHAR(100) NOT NULL,
+    authorisedByAdmin BOOL         NOT NULL,
+    restoId           BIGINT,
     PRIMARY KEY (id),
     CONSTRAINT unique_users_email UNIQUE (email)
 ) ENGINE = InnoDB;

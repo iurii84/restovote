@@ -46,6 +46,11 @@ public class User {
     private String password;                                            //password of user
 
     @JsonIgnore
+    @Column(name = "authorisedByAdmin", nullable = false, columnDefinition = "bool default false")
+
+    private boolean authorisedByAdmin;
+
+    @JsonIgnore
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "userroles", joinColumns = @JoinColumn(name = "userId"))
     @Column(name = "role")
@@ -125,5 +130,13 @@ public class User {
 
     public boolean isNew() {
         return this.id == null;
+    }
+
+    public boolean isAuthorisedByAdmin() {
+        return authorisedByAdmin;
+    }
+
+    public void setAuthorisedByAdmin(boolean authorisedByAdmin) {
+        this.authorisedByAdmin = authorisedByAdmin;
     }
 }
