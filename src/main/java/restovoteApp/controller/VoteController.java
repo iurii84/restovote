@@ -1,6 +1,5 @@
 package restovoteApp.controller;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,7 +8,7 @@ import restovoteApp.SecurityUtil;
 import restovoteApp.service.VoteService;
 
 @RestController
-@RequestMapping(value = "/vote", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/vote")
 public class VoteController {
     private VoteService voteService;
 
@@ -18,9 +17,9 @@ public class VoteController {
         this.voteService = voteService;
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void voteForRestaurant(@RequestParam Long restoId) {
+    @PostMapping
+    public void voteForRestaurant(@RequestParam Long restoid) {
         long authorisedUser = SecurityUtil.authUserId();
-        voteService.vote(authorisedUser, restoId);
+        voteService.vote(authorisedUser, restoid);
     }
 }

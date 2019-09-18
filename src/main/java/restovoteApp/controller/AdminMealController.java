@@ -41,6 +41,6 @@ public class AdminMealController {
     public void deleteMeal(@PathVariable Long id) {
         long authorisedUser = SecurityUtil.authUserId();
         System.out.println("meal_id = " + id);
-        mealService.delete(id, authorisedUser); // TODO implement users authentication
+        mealService.delete(id, authorisedUser);
     }
 }

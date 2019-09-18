@@ -12,6 +12,7 @@
         <intercept-url pattern="/meal/**" method="GET" access="isAuthenticated()" />
         <intercept-url pattern="/admin/meal/**"  access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/resto/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/vote/**" access="isAuthenticated()" />
         <csrf disabled="true" />
 
         <form-login login-page="/" default-target-url="/"

@@ -5,13 +5,12 @@ import restovoteApp.model.User;
 import restovoteApp.repository.RestaurantRepository;
 import restovoteApp.repository.UserRepository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Service
 public class VoteService {
-    private static final LocalTime LAST_VOTE_TIME = LocalTime.of(11, 00);
+    private static final LocalTime VOTE_DEADLINE = LocalTime.of(11, 00);
     private UserRepository userRepository;
     private RestaurantRepository restaurantRepository;
 
@@ -20,10 +19,8 @@ public class VoteService {
         this.restaurantRepository = restaurantRepository;
     }
 
-
     public void vote(Long userId, Long restoId) {
         LocalDateTime dateTimeNow = LocalDateTime.now();
-        LocalDate dateNow = LocalDate.now();
         LocalTime timeNow = LocalTime.now();
         User currentUser = userRepository.get(userId);
 
@@ -34,7 +31,7 @@ public class VoteService {
             userRepository.save(currentUser);
         }
 
-        if (timeNow.isBefore(LAST_VOTE_TIME)) {
+        if (timeNow.isBefore(VOTE_DEADLINE)) {
             currentUser.setDateTimeOfVote(dateTimeNow);
             currentUser.setVotedFor(restaurantRepository.get(restoId));
 
