@@ -22,7 +22,7 @@ It should contain the code and README.md with API documentation and curl command
 ## Realisation
 **1.** First, the users have to register
 ```
-curl -v -XPOST -H "Content-type: application/json" -d '{
+curl -XPOST -H "Content-type: application/json" -d '{
       "name": "Steve Jobs",
       "email": "steve@jobs.com",
       "password": "stevespassword"
