@@ -17,3 +17,15 @@ Each restaurant provides new menu each day.
 As a result, provide a link to github repository.
 
 It should contain the code and README.md with API documentation and curl commands to get data for voting and vote.
+
+
+## Realisation
+**1.** First, the users have to register
+```
+curl -v -XPOST -H "Content-type: application/json" -d '{
+      "name": "Steve Jobs",
+      "email": "steve@jobs.com",
+      "password": "stevespassword"
+   }' 'http://localhost:8080/restovote/user'
+   ```
+   By default all users are not authorised by Admin and belongs to **ROLE_USER** group
