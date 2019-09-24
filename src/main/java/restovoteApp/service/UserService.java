@@ -18,7 +18,8 @@ import java.util.Set;
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserService implements UserDetailsService {
     private UserRepository userRepository;
-    public UserService (UserRepository userRepository) {
+
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -27,7 +28,18 @@ public class UserService implements UserDetailsService {
         Set<Role> roles = new HashSet<>();
         roles.add(Role.ROLE_USER);
         user.setRoles(roles);
-        return userRepository.save (user);
+        return userRepository.save(user);
+    }
+
+    public void editUser(User user, long id, Long authUser) {
+        if (userRepository.get(authUser).getRoles().contains(Role.ROLE_ADMIN)) {
+            User oldUser = userRepository.get(id);
+            oldUser.setEmail(user.getEmail());
+            oldUser.setPassword(user.getPassword());
+            oldUser.setName(user.getName());
+
+            userRepository.save(oldUser);
+        }
     }
 
     @Override

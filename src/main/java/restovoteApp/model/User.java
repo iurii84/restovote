@@ -37,7 +37,7 @@ public class User {
     @Column(name = "email", nullable = false, unique = true)
     @NotBlank
     @Email
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 40)
     private String email;                                               //unique email - used for identification in the system
 
     @Column(name = "password", nullable = false)

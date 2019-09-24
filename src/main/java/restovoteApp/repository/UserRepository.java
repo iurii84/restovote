@@ -26,6 +26,7 @@ public class UserRepository {
     }
 
 
+
     public User get(Long userId) {
         Query query = entityManager.createNamedQuery(User.GET_BY_ID)
                 .setParameter("id", userId);
