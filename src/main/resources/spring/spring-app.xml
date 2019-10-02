@@ -9,4 +9,8 @@
     <context:component-scan base-package="restovoteApp.service, restovoteApp.model, restovoteApp.repository"/>
     <import resource="spring-security.xml"/>
 
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
 </beans>
