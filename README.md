@@ -48,3 +48,15 @@ curl -X POST \
       "name": "my new super-puper restaurant"
  }'
 ```
+
+**4.** After the participating restaurants are created - Admin create the meals, that belongs to restaurants.
+```
+curl -X POST \
+  'http://localhost:8080/restovote/admin/meal?restoId=2' \
+  -H 'Authorization: Basic aXVyaWlAZ21haWwuY29tOjEyMzEyMzEyMw==' \
+  -H 'Content-Type: application/json' \
+  -d '{
+      "description": "superMeal2",
+      "price": 187
+   }'
+```
