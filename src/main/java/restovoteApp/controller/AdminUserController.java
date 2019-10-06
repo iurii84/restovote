@@ -14,6 +14,12 @@ public class AdminUserController {
         this.userService = userService;
     }
 
+    @PostMapping(value = "/authorise/{userId}" , consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void authoriseUser(@PathVariable long userId) {
+        long authorisedUser = SecurityUtil.authUserId();
+        userService.authoriseUser(userId, authorisedUser);
+    }
+
 
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void editUser(@RequestBody User user, @PathVariable long id) {

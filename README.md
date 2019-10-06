@@ -29,3 +29,11 @@ curl -XPOST -H "Content-type: application/json" -d '{
    }' 'http://localhost:8080/restovote/user'
    ```
    By default all users are not authorised by Admin and belongs to **ROLE_USER** group
+   
+**2.**   So Admin has to authorise the new users:
+```
+curl -X POST \
+  http://192.168.0.110:8080/restovote/admin/users/authorise/3 \
+  -H 'Authorization: Basic aXVyaWlAZ21haWwuY29tOjEyMzEyMzEyMw==' \
+  -H 'Content-Type: application/json' \
+```
