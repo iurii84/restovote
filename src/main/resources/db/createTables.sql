@@ -21,7 +21,8 @@ CREATE TABLE restaurants
     id        BIGINT      NOT NULL AUTO_INCREMENT,
     name      VARCHAR(30) NOT NULL,
     createdBy BIGINT      NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    CONSTRAINT unique_restaurant_name UNIQUE (name)
 ) ENGINE = InnoDB;
 
 CREATE TABLE users
