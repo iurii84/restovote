@@ -37,3 +37,14 @@ curl -X POST \
   -H 'Authorization: Basic aXVyaWlAZ21haWwuY29tOjEyMzEyMzEyMw==' \
   -H 'Content-Type: application/json' \
 ```
+
+**3.** This time, Admin create new restaurants
+```
+curl -X POST \
+  http://192.168.0.110:8080/restovote/resto \
+  -H 'Authorization: Basic aXVyaWlAZ21haWwuY29tOjEyMzEyMzEyMw==' \
+  -H 'Content-Type: application/json' \
+  -d '{
+      "name": "my new super-puper restaurant"
+ }'
+```
