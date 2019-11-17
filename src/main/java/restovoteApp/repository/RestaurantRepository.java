@@ -8,6 +8,7 @@ import restovoteApp.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
@@ -30,6 +31,11 @@ public class RestaurantRepository {
         Query getQuery = entityManager.createNamedQuery(Restaurant.GET_BY_ID)
                 .setParameter("id", restaurantId);
         return (Restaurant) getQuery.getSingleResult();
+
+    }
+    public List getAll() {
+        Query getAllQuery = entityManager.createNamedQuery(Restaurant.GET_ALL);
+        return getAllQuery.getResultList();
 
     }
 

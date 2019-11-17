@@ -60,3 +60,5 @@ curl -X POST \
       "price": 187
    }'
 ```
+**5.** Users can see all participating restaurants
+**6.** Users now can see the menu of each restaurant
