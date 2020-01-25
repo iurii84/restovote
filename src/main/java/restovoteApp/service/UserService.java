@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService {
     public void authoriseUser(long userId, long authorisedUser) {
         if (userRepository.get(authorisedUser).getRoles().contains(Role.ROLE_ADMIN)) {
             User userToAuthorise = userRepository.get(userId);
-            if (userToAuthorise.isAuthorisedByAdmin() == false) {
+            if (!userToAuthorise.isAuthorisedByAdmin()) {
                 userToAuthorise.setAuthorisedByAdmin(true);
                 userRepository.save(userToAuthorise);
             }
