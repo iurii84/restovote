@@ -6,7 +6,7 @@
 
 
     <tx:annotation-driven/>
-    <context:component-scan base-package="restovoteApp.service, restovoteApp.model, restovoteApp.repository"/>
+    <context:component-scan base-package="restovote.service, restovote.model, restovote.repository"/>
     <import resource="spring-security.xml"/>
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">

@@ -11,7 +11,7 @@
 
     <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
 
-    <context:component-scan base-package="restovoteApp.repository.*"/>
+    <context:component-scan base-package="restovote.repository.*"/>
     <tx:annotation-driven/>
 
     <!--no pooling-->
@@ -27,7 +27,7 @@
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
-          p:packagesToScan="restovoteApp.model">
+          p:packagesToScan="restovote.model">
         <!--p:persistenceUnitName="persistenceUnit">-->
 
         <property name="jpaPropertyMap">
